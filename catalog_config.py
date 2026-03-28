@@ -3,12 +3,10 @@
 优先级（从高到低）：
 1. 环境变量 ITEMCALC_CATALOG（绝对路径，或相对项目根的路径）
 2. 项目内 data/app_config.json 的 catalog_path 字段（同上）
-3. 默认：<项目根>/data/products.json
-
-Excel 目录需在 app_config.json 中设置 catalog_path，例如：
-  \"catalog_path\": \"data/products_catalog.xlsx\"
+3. 默认：<项目根>/data/products_catalog.xlsx（商品与分类从此 Excel 读取）
 
 工作表名默认为「商品目录」；首行表头：分类、商品名、单价。
+仍可通过 catalog_path 或环境变量改为 .json 等其他文件。
 """
 
 from __future__ import annotations
@@ -19,7 +17,7 @@ from pathlib import Path
 
 ENV_CATALOG = "ITEMCALC_CATALOG"
 CONFIG_REL = Path("data") / "app_config.json"
-DEFAULT_CATALOG_REL = Path("data") / "products.json"
+DEFAULT_CATALOG_REL = Path("data") / "products_catalog.xlsx"
 
 
 def _expand_path(raw: str, project_root: Path) -> Path:

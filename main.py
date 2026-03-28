@@ -482,8 +482,8 @@ def main() -> None:
         messagebox.showerror(
             "无法加载数据",
             f"未找到商品目录文件：\n{path}\n\n"
-            "默认使用 data/products.json；使用 Excel 时请在 data/app_config.json 中设置 "
-            "catalog_path，并保证文件存在。",
+            "默认从 data/products_catalog.xlsx 读取商品目录；也可在 data/app_config.json 中设置 "
+            "catalog_path 指向其他文件，并保证文件存在。",
         )
         sys.exit(1)
     except json.JSONDecodeError as e:
